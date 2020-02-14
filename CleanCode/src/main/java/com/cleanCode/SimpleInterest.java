@@ -1,22 +1,31 @@
 package com.cleanCode;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.Scanner;
 
 public class SimpleInterest {
 	float principleAmount,rate,time,simpleInterest;
-	void readValues(){
+	void readValues() throws IOException{
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Principle Amount : ");
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		bw.write("Enter Principle Amount : ");
+		bw.flush();
 		principleAmount = sc.nextFloat();
-		System.out.println("Enter Rate : ");
+		bw.write("Enter Rate : ");
+		bw.flush();
 		rate = sc.nextFloat();
-		System.out.println("Enter Time Period : ");
+		bw.write("Enter Time Period : ");
+		bw.flush();
 		time = sc.nextFloat();
 	}
 	void calculateSimpleInterest(){
 		simpleInterest = (principleAmount * rate * time)/100;
 	}
-	void displayAmount(){
-		System.out.println("Total Amount : "+simpleInterest);
+	void displayAmount() throws IOException{
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		bw.write("Total Amount : "+simpleInterest);
+		bw.flush();
 	}
 }

@@ -1,16 +1,23 @@
 package com.cleanCode;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.Scanner;
 
 public class CompoundInterest {
 	float principleAmount,rate,time,compoundInterest,n;
-	void readValues(){
+	void readValues() throws IOException{
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Principle Amount : ");
+		bw.write("Enter Principle Amount : ");
+		bw.flush();
 		principleAmount = sc.nextFloat();
-		System.out.println("Enter Rate : ");
+		bw.write("Enter Rate : ");
+		bw.flush();
 		rate = sc.nextFloat();
-		System.out.println("Enter Time Period : ");
+		bw.write("Enter Time Period : ");
+		bw.flush();
 		time = sc.nextFloat();
 		//System.out.println("Enter Number of times the amount should be compunded : ");
 		//n = sc.nextFloat();
@@ -18,8 +25,10 @@ public class CompoundInterest {
 	void calculateCompoundInterest(){
 		compoundInterest = (float) (principleAmount * (Math.pow((1 + rate / 100.0), time))); 
 	}
-	void displayAmount(){
-		System.out.println("Total Amount : "+compoundInterest);
+	void displayAmount() throws IOException{
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		bw.write("Total Amount : "+compoundInterest);
+		bw.flush();
 	}
 	
 

@@ -1,5 +1,8 @@
 package com.cleanCode;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.Scanner;
 
 /**
@@ -8,12 +11,14 @@ import java.util.Scanner;
  */
 public class CalculateInterest 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws IOException
     {
     	Scanner sc = new Scanner(System.in);
-    	System.out.println("Choose either option 1 or 2 :");
-    	System.out.println("1.Simple Interest");
-    	System.out.println("2.Compound Interest");
+    	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    	bw.write("Choose either option 1 or 2 :"+"\n");
+    	bw.write("1.Simple Interest"+"\n");
+    	bw.write("2.Compound Interest"+"\n");
+    	bw.flush();
     	SimpleInterest simpleInterest = new SimpleInterest();
     	CompoundInterest compoundInterest = new CompoundInterest();
     	int choice = sc.nextInt();
@@ -26,7 +31,8 @@ public class CalculateInterest
 			   compoundInterest.calculateCompoundInterest();
 			   compoundInterest.displayAmount();
 			   break;
-			default:System.out.println("Please Enter Valid Option!");
+			default:bw.write("Please Enter Valid Option!");
     	}
+    	bw.flush();
     }
 }
